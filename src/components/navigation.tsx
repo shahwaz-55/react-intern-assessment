@@ -10,6 +10,10 @@ const pageLinks = [
         path: "/create",
         label: "create",
     },
+    {
+        path: "/archive",
+        label: "archive",
+    },
 ]
 
 export function Navigation() {

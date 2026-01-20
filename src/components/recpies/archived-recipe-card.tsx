@@ -13,15 +13,15 @@ import {
 import { Button } from "../ui/button";
 import { useRecipeStore } from "@/store/recipes";
 
-interface RecipieCardProps {
+interface ArchivedRecipieCardProps {
     id: string
     title: string;
     description: string
 }
 
-export default function RecipieCard({ id, title, description }: RecipieCardProps) {
+export default function ArchivedRecipieCard({ id, title, description }: ArchivedRecipieCardProps) {
     const deleteRecipe = useRecipeStore((state) => state.deleteRecipe);
-    const archiveRecipe = useRecipeStore((state) => state.archiveRecipe);
+    const unarchiveRecipe = useRecipeStore((state) => state.unarchiveRecipe);
 
     return (
         <Card className="p-3 hover:cursor-pointer flex flex-col justify-between">
@@ -36,18 +36,18 @@ export default function RecipieCard({ id, title, description }: RecipieCardProps
             <div className="flex justify-end mt-2 space-x-2">
                 <AlertDialog>
                     <AlertDialogTrigger asChild>
-                        <Button variant="outline" size="sm">Archive</Button>
+                        <Button variant="outline" size="sm">Unarchive</Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                         <AlertDialogHeader>
-                            <AlertDialogTitle>Are you sure you want to archive this recipe?</AlertDialogTitle>
+                            <AlertDialogTitle>Are you sure you want to unarchive this recipe?</AlertDialogTitle>
                             <AlertDialogDescription>
-                                This action will move the recipe to the archive. You can unarchive it later.
+                                This action will move the recipe back to the home page.
                             </AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter>
                             <AlertDialogCancel>Cancel</AlertDialogCancel>
-                            <AlertDialogAction onClick={() => archiveRecipe(id)}>Archive</AlertDialogAction>
+                            <AlertDialogAction onClick={() => unarchiveRecipe(id)}>Unarchive</AlertDialogAction>
                         </AlertDialogFooter>
                     </AlertDialogContent>
                 </AlertDialog>
